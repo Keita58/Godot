@@ -21,6 +21,11 @@ func _process(delta: float):
 	if Input.is_action_pressed("moure_dreta"):
 		velocity.x += 1
 	
+	if Input.is_action_pressed("camera_dreta"):
+		velocity.x += 1
+	elif Input.is_action_pressed("camera_esquerra"):
+		velocity.x += 1
+	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
