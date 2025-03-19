@@ -1,7 +1,12 @@
 extends Area2D
+
+class_name Player
+
 signal hit
 
 @export var speed = 400
+var hp:int=3
+
 var screen_size
 
 # Funció que s'executa quan entrem a l'escena
@@ -45,10 +50,17 @@ func _process(delta: float):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	hide() # Player disappears after being hit.
-	hit.emit()
+	if (hp>0): 
+		hp-=1
+	else:
+		hide()
+		hit.emit()
+		$CollisionShape2D.set_deferred("disabled", true)
+	
+	if body is Mob:
+		(body as Mob).has_xocat()
+	
 	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
 
 func start(pos):
 	position = pos
