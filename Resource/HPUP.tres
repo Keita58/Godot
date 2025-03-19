@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="HPPowerUp" load_steps=3 format=3 uid="uid://csulbwp8rnljh"]
+
+[ext_resource type="Script" uid="uid://cnhuttn66csi8" path="res://Resource/Definition/PowerUpHp.gd" id="1_hep7p"]
+[ext_resource type="Texture2D" uid="uid://e61gocthtiv8" path="res://art/heart pixel art 254x254.png" id="2_bdnpo"]
+
+[resource]
+script = ExtResource("1_hep7p")
+sprite = ExtResource("2_bdnpo")
+name = "HP"
+metadata/_custom_type_script = "uid://cnhuttn66csi8"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds0qcywbdy8en"]
+
+[ext_resource type="Texture2D" uid="uid://e61gocthtiv8" path="res://art/heart pixel art 254x254.png" id="1_lbdsv"]
+[ext_resource type="Script" uid="uid://cf52gxlpndk43" path="res://power_up.gd" id="1_mkoic"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkoic"]
+radius = 138.694
+
+[node name="Power_up" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_mkoic")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lbdsv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.66667, -6.66667)
+shape = SubResource("CircleShape2D_mkoic")

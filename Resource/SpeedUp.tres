@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpeedPowerUp" load_steps=3 format=3 uid="uid://sd6rcbs0xsh2"]
+
+[ext_resource type="Script" uid="uid://crmte58x5b6e2" path="res://Resource/Definition/PowerUpSpeed.gd" id="1_eobiu"]
+[ext_resource type="Texture2D" uid="uid://s0dx7hsqlj00" path="res://icon.svg" id="2_c1upa"]
+
+[resource]
+script = ExtResource("1_eobiu")
+sprite = ExtResource("2_c1upa")
+name = "Speed"
+metadata/_custom_type_script = "uid://crmte58x5b6e2"
