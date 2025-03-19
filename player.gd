@@ -12,42 +12,26 @@ var screen_size
 # Funció que s'executa quan entrem a l'escena
 func _ready():
 	screen_size = get_viewport_rect().size
-	hide()
+	#hide()
 
 # Update de Godot
 func _process(delta: float):
-	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("moure_dalt"):
-		velocity.y -= 1
-	if Input.is_action_pressed("moure_abaix"):
-		velocity.y += 1
-	if Input.is_action_pressed("moure_esquerra"):
-		velocity.x -= 1
-	if Input.is_action_pressed("moure_dreta"):
-		velocity.x += 1
-	
-	if Input.is_action_pressed("camera_dreta"):
-		velocity.x += 1
-	elif Input.is_action_pressed("camera_esquerra"):
-		velocity.x += 1
-	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		position += Vector2(0,-1).rotated(rotation) * speed * delta
+		$AnimatedSprite2D.play()
+	elif Input.is_action_pressed("moure_abaix"):
+		position += Vector2(0,1).rotated(rotation) * speed * delta
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
 	
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	if Input.is_action_pressed("camera_dreta"):
+		rotation_degrees += 3
+	elif Input.is_action_pressed("camera_esquerra"):
+		rotation_degrees -= 3
 	
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
-
+	# Això és per a que no surti de la pantalla
+	position = position.clamp(Vector2.ZERO, screen_size)
 
 func _on_body_entered(body: Node2D) -> void:
 	if (hp>0): 
