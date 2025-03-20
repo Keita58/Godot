@@ -21,6 +21,12 @@ func _process(delta: float):
 	elif Input.is_action_pressed("moure_abaix"):
 		position += Vector2(0,1).rotated(rotation) * speed * delta
 		$AnimatedSprite2D.play()
+	elif Input.is_action_pressed("moure_esquerra"):
+		position += Vector2(-1,0).rotated(rotation) * speed * delta
+		$AnimatedSprite2D.play()
+	elif Input.is_action_pressed("moure_dreta"):
+		position += Vector2(1,0).rotated(rotation) * speed * delta
+		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
 	
