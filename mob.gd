@@ -1,5 +1,6 @@
 class_name Mob
 extends RigidBody2D
+
 signal onXocarMob (powerUp:PowerUp)
 
 @export var power_upScene:PackedScene
@@ -12,6 +13,7 @@ func _ready() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+	#Recorrer getConnections y desconectar.
 
 func has_xocat() -> void:
 	print_debug("xoco")

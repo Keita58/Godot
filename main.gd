@@ -39,7 +39,7 @@ func new_game():
 	get_tree().call_group("mobs", "queue_free")
 
 func _on_mob_timer_timeout() -> void:
-	var mob = mob_scene.instantiate()
+	var mob:Mob = mob_scene.instantiate()
 
 	var mob_spawn_location = %MobSpawnLocation
 	mob_spawn_location.progress_ratio = randf()
@@ -53,7 +53,7 @@ func _on_mob_timer_timeout() -> void:
 
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
-
+	mob.onXocarMob.connect(_onSpawnPowerUp, CONNECT_ONE_SHOT)
 	add_child(mob)
 
 func _on_score_timer_timeout() -> void:
@@ -65,4 +65,4 @@ func _on_start_timer_timeout() -> void:
 	$ScoreTimer.start()
 	
 func _onSpawnPowerUp(powerUp: PowerUp)->void:
-	pass
+	add_child(powerUp)
