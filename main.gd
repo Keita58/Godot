@@ -65,4 +65,5 @@ func _on_start_timer_timeout() -> void:
 	$ScoreTimer.start()
 	
 func _onSpawnPowerUp(powerUp: PowerUp)->void:
-	add_child(powerUp)
+	var spawnPossibility:int=randi_range(1, 10)
+	if (spawnPossibility<=9):add_child(powerUp)

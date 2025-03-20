@@ -24,7 +24,3 @@ func has_xocat() -> void:
 	print_debug(power_up.global_position)
 	onXocarMob.emit(power_up)
 	queue_free()
-
-
-func _onSpawnPowerUp(powerUp: PowerUp) -> void:
-	pass # Replace with function body.
