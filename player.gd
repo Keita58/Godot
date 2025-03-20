@@ -1,6 +1,5 @@
-extends Area2D
-
 class_name Player
+extends Area2D
 
 signal hit
 
@@ -50,3 +49,9 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is PowerUp:
+		area.PowerUpType.efectePowerUp(self)
+		area.queue_free()
