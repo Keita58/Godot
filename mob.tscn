@@ -1,15 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvut7msp7bxca"]
+[gd_scene load_steps=10 format=3 uid="uid://cvut7msp7bxca"]
 
 [ext_resource type="Script" uid="uid://cdsm6km4o3kmp" path="res://mob.gd" id="1_1qmh0"]
 [ext_resource type="Texture2D" uid="uid://dfacil2pqneuc" path="res://art/enemyFlyingAlt_1.png" id="1_b3mxk"]
 [ext_resource type="Texture2D" uid="uid://d8dtciqfcsdx" path="res://art/enemyFlyingAlt_2.png" id="2_1qmh0"]
-[ext_resource type="PackedScene" uid="uid://ds0qcywbdy8en" path="res://power_up.tscn" id="2_7ulmv"]
 [ext_resource type="Texture2D" uid="uid://cxr7h7rq5xu53" path="res://art/enemySwimming_1.png" id="3_gfurk"]
-[ext_resource type="Script" uid="uid://bios6cywc5f1n" path="res://Resource/Definition/PowerUpResource.gd" id="3_pcqmr"]
 [ext_resource type="Texture2D" uid="uid://88wlio1bays5" path="res://art/enemySwimming_2.png" id="4_ieysi"]
-[ext_resource type="Resource" uid="uid://csulbwp8rnljh" path="res://Resource/HPUP.tres" id="4_jbnni"]
 [ext_resource type="Texture2D" uid="uid://t3wgplanc6kt" path="res://art/enemyWalking_1.png" id="5_cixyi"]
-[ext_resource type="Resource" uid="uid://sd6rcbs0xsh2" path="res://Resource/SpeedUp.tres" id="5_yscv0"]
 [ext_resource type="Texture2D" uid="uid://dxpws6btce4jm" path="res://art/enemyWalking_2.png" id="6_7ulmv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pcqmr"]
@@ -53,11 +49,11 @@ radius = 49.0
 height = 102.0
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
+position = Vector2(103, 113)
+scale = Vector2(1, 1.01195)
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_1qmh0")
-power_upScene = ExtResource("2_7ulmv")
-powerUpConfigurations = Array[ExtResource("3_pcqmr")]([ExtResource("4_jbnni"), ExtResource("5_yscv0")])
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -72,3 +68,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jbnni")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

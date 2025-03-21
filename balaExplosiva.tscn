@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3nhhw3o7j4nd"]
+
+[ext_resource type="PackedScene" uid="uid://cd8lgtbrl08ri" path="res://bala.tscn" id="1_edvcb"]
+
+[node name="Area2D" instance=ExtResource("1_edvcb")]
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 4.0
