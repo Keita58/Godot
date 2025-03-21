@@ -74,6 +74,6 @@ shape = SubResource("CapsuleShape2D_jbnni")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="ShootTime" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.5
 
 [connection signal="timeout" from="ShootTime" to="." method="_on_shoot_time_timeout"]
