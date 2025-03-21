@@ -36,4 +36,6 @@ func _on_power_up_timer_timeout() -> void:
 	else:
 		update_powerUpTime(durationPowerUp)
 	
-	
+
+func _on_player_hurt(vida: int) -> void:
+	$Hp.text = "Lives: " + str(vida)
