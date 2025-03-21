@@ -16,11 +16,11 @@ func game_over() -> void:
 	$MobTimer.stop()
 	
 	#Guardem al ScriptableObject la puntuació final
-	var so_score = load("res://score_scriptable.tres")
+	var so_score = load("res://Resource/score_scriptable.tres")
 	so_score.score = score
 	ResourceSaver.save(so_score)
 	#I aquí mirem si la puntuació és la més alta
-	var so_best = load("res://best_score.tres")
+	var so_best = load("res://Resource/best_score.tres")
 	if(so_score.score > so_best.score):
 		so_best.score = score
 		ResourceSaver.save(so_best)
@@ -29,7 +29,7 @@ func game_over() -> void:
 
 func new_game():
 	score = 0
-	var so_score = load("res://score_scriptable.tres")
+	var so_score = load("res://Resource/score_scriptable.tres")
 	so_score.score = 0
 	ResourceSaver.save(so_score)
 	$Player.start($StartPosition.position)
