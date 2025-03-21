@@ -25,14 +25,15 @@ func update_powerUpTime(timeLeft)->void:
 func _on_player_iniciar_timer_power_up(duration: int) -> void:
 	$PowerUpTimer.start()
 	$PowerUpTimeLeft.show()
+	update_powerUpTime(duration)
 	durationPowerUp=duration
 
 func _on_power_up_timer_timeout() -> void:
+	durationPowerUp-=1
 	if durationPowerUp<0:
 		$PowerUpTimer.stop()
 		$PowerUpTimeLeft.hide()
 	else:
 		update_powerUpTime(durationPowerUp)
-		durationPowerUp-=1
 	
 	
