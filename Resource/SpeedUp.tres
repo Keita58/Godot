@@ -7,4 +7,5 @@
 script = ExtResource("1_eobiu")
 sprite = ExtResource("2_c1upa")
 name = "Speed"
+scale = Vector2(0.3, 0.3)
 metadata/_custom_type_script = "uid://crmte58x5b6e2"
