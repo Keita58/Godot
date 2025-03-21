@@ -39,6 +39,9 @@ func _process(delta: float):
 	elif Input.is_action_pressed("camera_esquerra"):
 		rotation_degrees -= 3
 	"""
+	if hp<=0:
+		hide()
+		hit.emit()
 	mouse_pos = get_viewport().get_mouse_position()
 	get_node(".").look_at(mouse_pos)
 	if(position.distance_to(get_viewport().get_mouse_position()) > 5):

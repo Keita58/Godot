@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ednt3vyqafi5"]
+[gd_scene load_steps=7 format=3 uid="uid://ednt3vyqafi5"]
 
 [ext_resource type="Script" uid="uid://s3pvu8w5lt0t" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cvut7msp7bxca" path="res://mob.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c1dubdx8ibqro" path="res://player.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dats3gsicw78r" path="res://hud.tscn" id="4_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://ccadegjacqgeo" path="res://art/youtube_MFtr4rw-dwI_854x478_h264.wav" id="5_lquwl"]
 
 [sub_resource type="Curve2D" id="Curve2D_1bvp3"]
 _data = {
@@ -37,6 +38,10 @@ unique_name_in_owner = true
 rotation = 0.00234558
 
 [node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_lquwl")
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="hurt" from="Player" to="HUD" method="_on_player_hurt"]
