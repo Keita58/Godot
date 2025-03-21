@@ -2,6 +2,7 @@ class_name Player
 extends Area2D
 
 signal hit
+signal iniciarTimerPowerUp(duration:int)
 
 @export var speed = 400
 var hp:int=3
@@ -41,14 +42,17 @@ func _process(delta: float):
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 func _on_body_entered(body: Node2D) -> void:
-	if (hp>0 and !isInvencible): 
-		print("XOCO ENEMIGOd")
+	if hp>0 and !isInvencible: 
+		print("XOCO ENEMIGO")
 		hp-=1
-	elif (hp<=0):
-		print("XOCO ENEMIGOd")
+	elif hp<=0:
+		print("XOCO ENEMIGO muelto")
 		hide()
 		hit.emit()
 		$CollisionShape2D.set_deferred("disabled", true)
+	
+	if isInvencible:
+		print("SOY INVENCIBLE")
 	
 	if body is Mob:
 		(body as Mob).has_xocat()
@@ -59,16 +63,18 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func _invencible(duration:int)->void:
+	iniciarTimerPowerUp.emit(duration)
+	if tween!=null and !tween.is_running():
+		tween.kill()
+
 	isInvencible=true
+	#Timer per a la duració del powerUp
 	var timer:Timer = Timer.new()
 	add_child(timer)
 	timer.wait_time=duration
 	timer.one_shot = true
 	var spritePlayer:AnimatedSprite2D = $AnimatedSprite2D
-	
-	if tween!=null and !tween.is_running():
-		tween.kill()
-	
+
 	tween = create_tween()
 	tween.tween_property(spritePlayer, "modulate", Color.RED, 0.1)
 	tween.tween_property(spritePlayer, "modulate", Color.ORANGE, 0.1)
@@ -84,6 +90,14 @@ func _invencible(duration:int)->void:
 	tween.kill()
 	isInvencible=false
 	spritePlayer.modulate=Color.WHITE
+
+#func crearTimerPowerUp(duration:int)->void:
+	#var tempsMaxim:int=duration
+	#while duration>=0:
+		#var timeLeftPowerUp:Timer = Timer.new()
+		#timeLeftPowerUp.wait_time=1
+		#await timeLeftPowerUp.timeout
+		#duration-=1
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is PowerUp:
