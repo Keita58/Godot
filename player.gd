@@ -10,33 +10,34 @@ var isInvencible:bool=false
 var tween:Tween
 
 var screen_size
+var mouse_pos
+var area_mouse
 
 # Funció que s'executa quan entrem a l'escena
 func _ready():
 	screen_size = get_viewport_rect().size
-	#hide()
+	area_mouse = Area2D.new()
+	var col = CollisionShape2D.new()
+	var shape = CircleShape2D.new()
+	shape.radius = 0.3
+	col.shape = shape
+	area_mouse.add_child(col)
 
 # Update de Godot
 func _process(delta: float):
+	mouse_pos = get_viewport().get_mouse_position()
+	get_node(".").look_at(mouse_pos)
+	area_mouse.position = mouse_pos	
+	
 	if Input.is_action_pressed("moure_dalt"):
-		position += Vector2(0,-1).rotated(rotation) * speed * delta
+		position += Vector2(1, 0).rotated(rotation) * speed * delta
 		$AnimatedSprite2D.play()
 	elif Input.is_action_pressed("moure_abaix"):
-		position += Vector2(0,1).rotated(rotation) * speed * delta
-		$AnimatedSprite2D.play()
-	elif Input.is_action_pressed("moure_esquerra"):
-		position += Vector2(-1,0).rotated(rotation) * speed * delta
-		$AnimatedSprite2D.play()
-	elif Input.is_action_pressed("moure_dreta"):
-		position += Vector2(1,0).rotated(rotation) * speed * delta
+		position += Vector2(-1, 0).rotated(rotation) * speed * delta
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
 	
-	if Input.is_action_pressed("camera_dreta"):
-		rotation_degrees += 3
-	elif Input.is_action_pressed("camera_esquerra"):
-		rotation_degrees -= 3
 	
 	# Això és per a que no surti de la pantalla
 	position = position.clamp(Vector2.ZERO, screen_size)
