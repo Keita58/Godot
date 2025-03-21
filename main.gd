@@ -6,7 +6,6 @@ var score
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -67,3 +66,10 @@ func _on_start_timer_timeout() -> void:
 func _onSpawnPowerUp(powerUp: PowerUp)->void:
 	var spawnPossibility:int=randi_range(1, 10)
 	if (spawnPossibility<=9):add_child(powerUp)
+
+func _on_mob_shoot(Bullet, direction, location):
+	var spawned_bullet = Bullet.instantiate()
+	add_child(spawned_bullet)
+	spawned_bullet.rotation = direction
+	spawned_bullet.position = location
+	spawned_bullet.velocity = spawned_bullet.velocity.rotated(direction)

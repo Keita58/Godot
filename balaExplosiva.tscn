@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://h5ldgj7pjwy"]
+
+[ext_resource type="PackedScene" uid="uid://buhr7ijkpwu0d" path="res://bala.tscn" id="1_edvcb"]
+
+[node name="Area2D" instance=ExtResource("1_edvcb")]
+
+[node name="BalaExplosivaTimer" type="Timer" parent="." index="3"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="BalaExplosivaTimer" to="." method="_on_bala_explosiva_timer_timeout"]

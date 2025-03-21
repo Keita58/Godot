@@ -115,3 +115,12 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is PowerUp:
 		area.PowerUpType.efectePowerUp(self)
 		area.queue_free()
+	if area is Bala:
+		if (hp>0 and !isInvencible): 
+			print("XOCO ENEMIGOd")
+			hp-=1
+		elif (hp<=0):
+			print("XOCO ENEMIGOd")
+			hide()
+			hit.emit()
+			$CollisionShape2D.set_deferred("disabled", true)
