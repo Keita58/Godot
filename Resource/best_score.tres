@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Score" load_steps=2 format=3 uid="uid://dx7sqebk3spnq"]
+[gd_resource type="Resource" script_class="Score" load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://8bv0ouifmkgw" path="res://score.gd" id="1_ne0jb"]
+[ext_resource type="Script" path="res://score.gd" id="1_ne0jb"]
 
 [resource]
 script = ExtResource("1_ne0jb")
-score = 15
+score = 60
 metadata/_custom_type_script = "uid://8bv0ouifmkgw"

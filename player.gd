@@ -65,14 +65,14 @@ func start(pos):
 
 func _invencible(duration:int)->void:
 	iniciarTimerPowerUp.emit(duration)
-	if tween!=null and !tween.is_running():
+	if tween!=null and tween.is_running():
 		tween.kill()
 
 	isInvencible=true
 	#Timer per a la duració del powerUp
 	var timer:Timer = Timer.new()
 	add_child(timer)
-	timer.wait_time=duration
+	timer.start(duration)
 	timer.one_shot = true
 	var spritePlayer:AnimatedSprite2D = $AnimatedSprite2D
 
