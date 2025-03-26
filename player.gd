@@ -42,15 +42,16 @@ func _process(delta: float):
 	if hp<=0:
 		hide()
 		hit.emit()
-	mouse_pos = get_viewport().get_mouse_position()
-	get_node(".").look_at(mouse_pos)
-	if(position.distance_to(get_viewport().get_mouse_position()) > 5):
-		print_debug(position.distance_to(get_viewport().get_mouse_position()))
-		#position = position.lerp(Vector2(1, 0).rotated(rotation), speed * delta)
-		position += Vector2(1, 0).rotated(rotation) * speed * delta
-		$AnimatedSprite2D.play()
 	else:
-		$AnimatedSprite2D.stop()
+		mouse_pos = get_viewport().get_mouse_position()
+		get_node(".").look_at(mouse_pos)
+		if(position.distance_to(get_viewport().get_mouse_position()) > 5):
+			#print_debug(position.distance_to(get_viewport().get_mouse_position()))
+			#position = position.lerp(Vector2(1, 0).rotated(rotation), speed * delta)
+			position += Vector2(1, 0).rotated(rotation) * speed * delta
+			$AnimatedSprite2D.play()
+		else:
+			$AnimatedSprite2D.stop()
 	
 	# Això és per a que no surti de la pantalla
 	position = position.clamp(Vector2.ZERO, screen_size)
@@ -119,10 +120,14 @@ func _on_area_entered(area: Area2D) -> void:
 		area.PowerUpType.efectePowerUp(self)
 		area.queue_free()
 	if area is Bala:
-		if (hp>0 and !isInvencible): 
+		area.hide()
+		area.queue_free()
+		if hp>0 and !isInvencible: 
 			print("XOCO ENEMIGOd")
 			hp-=1
-		elif (hp<=0):
+			print("HP: "+str(hp))
+			hurt.emit(hp)
+		elif hp<=0:
 			print("XOCO ENEMIGOd")
 			hide()
 			hit.emit()
