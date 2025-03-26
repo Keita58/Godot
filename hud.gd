@@ -24,16 +24,20 @@ func update_powerUpTime(timeLeft)->void:
 
 func _on_player_iniciar_timer_power_up(duration: int) -> void:
 	$PowerUpTimer.start()
+	%AudioStreamPlayer2D.stream=load("res://art/youtube_MFtr4rw-dwI_854x478_h264.wav")
+	%AudioStreamPlayer2D.play()
 	$PowerUpTimeLeft.show()
+	update_powerUpTime(duration)
 	durationPowerUp=duration
 
 func _on_power_up_timer_timeout() -> void:
+	durationPowerUp-=1
 	if durationPowerUp<0:
 		$PowerUpTimer.stop()
 		$PowerUpTimeLeft.hide()
+		%AudioStreamPlayer2D.stop()
 	else:
 		update_powerUpTime(durationPowerUp)
-		durationPowerUp-=1
 	
 
 func _on_player_hurt(vida: int) -> void:
