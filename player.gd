@@ -7,6 +7,7 @@ signal hurt(vida:int)
 
 @export var speed = 300
 var hp:int = 3
+var ammo:int=20
 var isInvencible:bool=false
 var tween:Tween
 
