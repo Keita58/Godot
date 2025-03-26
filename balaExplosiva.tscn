@@ -5,6 +5,7 @@
 [node name="Area2D" instance=ExtResource("1_edvcb")]
 
 [node name="BalaExplosivaTimer" type="Timer" parent="." index="3"]
+wait_time = 0.7
 one_shot = true
 autostart = true
 
