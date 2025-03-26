@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmmoPowerUp" load_steps=3 format=3 uid="uid://dlnlg21on4w7x"]
+
+[ext_resource type="Script" uid="uid://cp4fuoxvpp2l3" path="res://Resource/Definition/PowerUpAmmo.gd" id="1_bu1s7"]
+[ext_resource type="Texture2D" uid="uid://c6xp1gr1td2dq" path="res://art/balas.png" id="2_edx1r"]
+
+[resource]
+script = ExtResource("1_bu1s7")
+sprite = ExtResource("2_edx1r")
+name = "Ammo"
+scale = Vector2(0.3, 0.3)
+metadata/_custom_type_script = "uid://cp4fuoxvpp2l3"
