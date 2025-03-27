@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1dubdx8ibqro"]
+[gd_scene load_steps=8 format=3 uid="uid://c1dubdx8ibqro"]
 
 [ext_resource type="Texture2D" uid="uid://d25ckcan64sge" path="res://art/playerGrey_up1.png" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://dk4n03xaiwm72" path="res://player.gd" id="1_sweqy"]
-[ext_resource type="Shader" uid="uid://dbot22hbakq5m" path="res://shaderPlayer.gdshader" id="2_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://d3q0cnlwvx3oq" path="res://art/playerGrey_up2.png" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://cke818xitsrnq" path="res://art/playerGrey_walk1.png" id="3_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://d14hgi5tjyeum" path="res://art/playerGrey_walk2.png" id="4_1jxqw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
-shader = ExtResource("2_2hs0m")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
@@ -45,7 +41,6 @@ script = ExtResource("1_sweqy")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_sweqy")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dw050")
 animation = &"walk"

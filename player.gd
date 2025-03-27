@@ -82,7 +82,7 @@ func start(pos):
 func _invencible(duration:int)->void:
 	iniciarTimerPowerUp.emit(duration)
 	if tween!=null and tween.is_running():
-		tween.kill()
+		tween.kill()               
 
 	isInvencible=true
 	#Timer per a la duració del powerUp
