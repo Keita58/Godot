@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cg67qiwx24xxd" path="res://fonts/Xolonium-Regular.ttf" id="1_37p78"]
 [ext_resource type="Script" uid="uid://cnhahdynwf0hx" path="res://hud.gd" id="1_64ctp"]
-[ext_resource type="Shader" uid="uid://1qnw5ia4vqnv" path="res://shaderPlayer.gdshader" id="2_8sq4i"]
+[ext_resource type="Shader" path="res://shaderPlayer.gdshader" id="2_8sq4i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8sq4i"]
 shader = ExtResource("2_8sq4i")
