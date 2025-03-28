@@ -2,15 +2,15 @@
 
 [ext_resource type="FontFile" uid="uid://cg67qiwx24xxd" path="res://fonts/Xolonium-Regular.ttf" id="1_37p78"]
 [ext_resource type="Script" uid="uid://cnhahdynwf0hx" path="res://hud.gd" id="1_64ctp"]
-[ext_resource type="Shader" uid="uid://dbot22hbakq5m" path="res://shaderPlayer.gdshader" id="2_8sq4i"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_640wx"]
-shader = ExtResource("2_8sq4i")
+[ext_resource type="Shader" uid="uid://1qnw5ia4vqnv" path="res://shaderPlayer.gdshader" id="2_8sq4i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8sq4i"]
 shader = ExtResource("2_8sq4i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1xsix"]
+shader = ExtResource("2_8sq4i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_640wx"]
 shader = ExtResource("2_8sq4i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a2258"]
@@ -20,7 +20,7 @@ shader = ExtResource("2_8sq4i")
 script = ExtResource("1_64ctp")
 
 [node name="ScoreLabel" type="Label" parent="."]
-material = SubResource("ShaderMaterial_640wx")
+material = SubResource("ShaderMaterial_8sq4i")
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 78.0
@@ -32,7 +32,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Message" type="Label" parent="."]
-material = SubResource("ShaderMaterial_8sq4i")
+material = SubResource("ShaderMaterial_1xsix")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -77,7 +77,7 @@ one_shot = true
 
 [node name="PowerUpTimeLeft" type="Label" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_1xsix")
+material = SubResource("ShaderMaterial_640wx")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

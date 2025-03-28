@@ -5,11 +5,13 @@ signal hit
 signal iniciarTimerPowerUp(duration:int)
 signal hurt(vida:int)
 
+
 @export var speed = 300
+var Bullet = preload("res://balaPlayer.tscn") # Replace with function body.
 var hp:int = 3
-var ammo:int=20
 var isInvencible:bool=false
 var tween:Tween
+var ammo:int = 25
 
 var screen_size
 var mouse_pos
@@ -17,6 +19,7 @@ var mouse_pos
 # Funció que s'executa quan entrem a l'escena
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
 
 # Update de Godot
 func _process(delta: float):
@@ -53,6 +56,9 @@ func _process(delta: float):
 			$AnimatedSprite2D.play()
 		else:
 			$AnimatedSprite2D.stop()
+		
+	if Input.is_action_just_pressed("click_izquierdo") and visible:
+		disparar()
 	
 	# Això és per a que no surti de la pantalla
 	position = position.clamp(Vector2.ZERO, screen_size)
@@ -91,7 +97,8 @@ func _invencible(duration:int)->void:
 	timer.start(duration)
 	timer.one_shot = true
 	var spritePlayer:AnimatedSprite2D = $AnimatedSprite2D
-
+	
+	timer.start()
 	tween = create_tween()
 	tween.tween_property(spritePlayer, "modulate", Color.RED, 0.1)
 	tween.tween_property(spritePlayer, "modulate", Color.ORANGE, 0.1)
@@ -101,7 +108,6 @@ func _invencible(duration:int)->void:
 	tween.tween_property(spritePlayer, "modulate", Color.VIOLET, 0.1)
 	tween.tween_property(spritePlayer, "modulate", Color.WHITE, 0.1).set_trans(Tween.TRANS_BOUNCE)
 	tween.set_loops()
-	timer.start()
 	await timer.timeout
 	timer.queue_free()
 	tween.kill()
@@ -133,3 +139,18 @@ func _on_area_entered(area: Area2D) -> void:
 			hide()
 			hit.emit()
 			$CollisionShape2D.set_deferred("disabled", true)
+
+func disparar():
+	if(ammo > 0):
+		var bullet_instance = Bullet.instantiate()
+		var spriteBullet:Sprite2D=bullet_instance.get_child(0)
+		spriteBullet.modulate = Color.YELLOW
+		bullet_instance.position = position
+		bullet_instance.rotation = rotation
+		bullet_instance.velocity = bullet_instance.velocity.rotated(rotation)
+		print_debug("entro")
+		get_tree().get_root().add_child(bullet_instance)
+		ammo-=1
+	else:
+		print_debug("JAJA pringado")
+		
