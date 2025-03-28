@@ -9,7 +9,6 @@ signal hurt(vida:int)
 @export var speed = 300
 var Bullet = preload("res://balaPlayer.tscn") # Replace with function body.
 var hp:int = 3
-var ammo:int=20
 var isInvencible:bool=false
 var tween:Tween
 var ammo:int = 25
@@ -20,6 +19,7 @@ var mouse_pos
 # Funció que s'executa quan entrem a l'escena
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
 
 # Update de Godot
 func _process(delta: float):
@@ -57,7 +57,7 @@ func _process(delta: float):
 		else:
 			$AnimatedSprite2D.stop()
 		
-	if Input.is_action_just_pressed("click_izquierdo"):
+	if Input.is_action_just_pressed("click_izquierdo") and visible:
 		disparar()
 	
 	# Això és per a que no surti de la pantalla
@@ -97,7 +97,8 @@ func _invencible(duration:int)->void:
 	timer.start(duration)
 	timer.one_shot = true
 	var spritePlayer:AnimatedSprite2D = $AnimatedSprite2D
-
+	
+	timer.start()
 	tween = create_tween()
 	tween.tween_property(spritePlayer, "modulate", Color.RED, 0.1)
 	tween.tween_property(spritePlayer, "modulate", Color.ORANGE, 0.1)
@@ -107,7 +108,6 @@ func _invencible(duration:int)->void:
 	tween.tween_property(spritePlayer, "modulate", Color.VIOLET, 0.1)
 	tween.tween_property(spritePlayer, "modulate", Color.WHITE, 0.1).set_trans(Tween.TRANS_BOUNCE)
 	tween.set_loops()
-	timer.start()
 	await timer.timeout
 	timer.queue_free()
 	tween.kill()

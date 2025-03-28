@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InvenciblePowerUp" load_steps=3 format=3 uid="uid://cjw2vbk7re8b7"]
 
 [ext_resource type="Script" uid="uid://4xyej82ymkyi" path="res://Resource/Definition/PowerUpInvencible.gd" id="1_k4lji"]
-[ext_resource type="Texture2D" uid="uid://d8dtciqfcsdx" path="res://art/enemyFlyingAlt_2.png" id="2_bmgxr"]
+[ext_resource type="Texture2D" uid="uid://dxik3qc71pcpb" path="res://art/star.png" id="2_bmgxr"]
 
 [resource]
 script = ExtResource("1_k4lji")

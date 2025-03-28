@@ -21,11 +21,14 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	#Recorrer getConnections y desconectar.
 
 func has_xocat() -> void:
-	var power_up=power_upScene.instantiate() as PowerUp
-	power_up.load_from(powerUpConfigurations[randi_range(0, powerUpConfigurations.size()-1)])
-	power_up.position=global_position
-	onXocarMob.emit(power_up)
-	queue_free()
+	if (randf_range(1,10)<=5):
+		var power_up=power_upScene.instantiate() as PowerUp
+		power_up.load_from(powerUpConfigurations[randi_range(0, powerUpConfigurations.size()-1)])
+		power_up.position=global_position
+		onXocarMob.emit(power_up)
+		queue_free()
+	else:
+		queue_free()
 
 func _shoot()->void:
 	var bullet_instance = Bullet.instantiate()
