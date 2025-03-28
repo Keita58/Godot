@@ -2,26 +2,29 @@ extends Area2D
 class_name balaPlayer
 signal hit
 var Bullet = preload("res://bala.tscn") # Replace with function body.
-
 signal shoot(bullet, direction, location)
-
 var velocity = Vector2.RIGHT*700
+@export var pool : Pool
 
+var player = preload("res://player.gd")
 
 func _physics_process(delta):
 	position += velocity * delta
 	
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+	player._pool.return_element(self)
+	#queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Mob: 
-		hide()
+		#hide()
+		get_tree().get_root().remove_child(self)
 		body.has_xocat()
-		#body.hide()
-		queue_free() # Replace with function body.
-		hit.emit()
+		player._pool.return_element(self)
+		body.hide()
+		#queue_free() # Replace with function body.
+	#	hit.emit()
 
 
 func _on_hit() -> void:

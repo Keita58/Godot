@@ -11,13 +11,20 @@ var Bullet = preload("res://balaPlayer.tscn") # Replace with function body.
 var hp:int = 3
 var isInvencible:bool=false
 var tween:Tween
-var ammo:int = 25
+var ammo:int = 10
 
 var screen_size
 var mouse_pos
 
+const POOLSIZE : int = 30
+const SPAWNRATE : float = 0.5
+
+@onready var _scree_size : Rect2 = get_viewport().get_visible_rect()
+static var _pool : Pool
 # Funció que s'executa quan entrem a l'escena
 func _ready():
+	_pool = Pool.new()
+	_pool.initialize(Bullet, POOLSIZE)
 	screen_size = get_viewport_rect().size
 
 # Update de Godot
@@ -141,7 +148,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func disparar():
 	if(ammo > 0):
-		var bullet_instance = Bullet.instantiate()
+		var bullet_instance = _spawn_bala()
 		var spriteBullet:Sprite2D=bullet_instance.get_child(0)
 		spriteBullet.modulate = Color.YELLOW
 		bullet_instance.position = position
@@ -153,3 +160,15 @@ func disparar():
 	else:
 		print_debug("JAJA pringado")
 		
+func _despawn(bala : balaPlayer) -> void:
+	remove_child(bala)
+	_pool.return_element(bala)
+
+func _spawn_bala() -> balaPlayer:
+	while true:
+		var bala : balaPlayer = _pool.get_element() as balaPlayer
+		bala.position.x = position.x
+		bala.position.y = position.y
+		get_tree().get_root().add_child(bala)
+		return bala
+	return
