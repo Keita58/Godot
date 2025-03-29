@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _ready() -> void:
+	$GameOverAudio.play()
 	show_score()
 
 func show_score() -> void:

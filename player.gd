@@ -57,7 +57,7 @@ func _process(delta: float):
 		mouse_pos = get_viewport().get_mouse_position()
 		get_node(".").look_at(mouse_pos)
 		if(position.distance_to(get_viewport().get_mouse_position()) > 5):
-			#print_debug(position.distance_to(get_viewport().get_mouse_position()))
+			#print_debugs(position.distance_to(get_viewport().get_mouse_position()))
 			#position = position.lerp(Vector2(1, 0).rotated(rotation), speed * delta)
 			position += Vector2(1, 0).rotated(rotation) * speed * delta
 			$AnimatedSprite2D.play()
@@ -151,6 +151,7 @@ func disparar():
 	if(ammo > 0):
 		var bullet_instance = _spawn_bala()
 		var spriteBullet:Sprite2D=bullet_instance.get_child(0)
+		$"../BulletSound".play()
 		spriteBullet.modulate = Color.YELLOW
 		bullet_instance.position = position
 		bullet_instance.rotation = rotation
