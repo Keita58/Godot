@@ -26,6 +26,7 @@ func _ready():
 	_pool = Pool.new()
 	_pool.initialize(Bullet, POOLSIZE)
 	screen_size = get_viewport_rect().size
+	hide()
 
 # Update de Godot
 func _process(delta: float):
@@ -63,7 +64,7 @@ func _process(delta: float):
 		else:
 			$AnimatedSprite2D.stop()
 		
-	if Input.is_action_just_pressed("click_izquierdo"):
+	if Input.is_action_just_pressed("click_izquierdo") and visible:
 		disparar()
 	
 	# Això és per a que no surti de la pantalla
@@ -94,7 +95,7 @@ func start(pos):
 func _invencible(duration:int)->void:
 	iniciarTimerPowerUp.emit(duration)
 	if tween!=null and tween.is_running():
-		tween.kill()
+		tween.kill()               
 
 	isInvencible=true
 	#Timer per a la duració del powerUp
@@ -103,7 +104,8 @@ func _invencible(duration:int)->void:
 	timer.start(duration)
 	timer.one_shot = true
 	var spritePlayer:AnimatedSprite2D = $AnimatedSprite2D
-
+	
+	timer.start()
 	tween = create_tween()
 	tween.tween_property(spritePlayer, "modulate", Color.RED, 0.1)
 	tween.tween_property(spritePlayer, "modulate", Color.ORANGE, 0.1)
@@ -113,7 +115,6 @@ func _invencible(duration:int)->void:
 	tween.tween_property(spritePlayer, "modulate", Color.VIOLET, 0.1)
 	tween.tween_property(spritePlayer, "modulate", Color.WHITE, 0.1).set_trans(Tween.TRANS_BOUNCE)
 	tween.set_loops()
-	timer.start()
 	await timer.timeout
 	timer.queue_free()
 	tween.kill()
