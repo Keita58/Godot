@@ -165,10 +165,9 @@ func _despawn(bala : balaPlayer) -> void:
 	_pool.return_element(bala)
 
 func _spawn_bala() -> balaPlayer:
-	while true:
-		var bala : balaPlayer = _pool.get_element() as balaPlayer
-		bala.position.x = position.x
-		bala.position.y = position.y
-		get_tree().get_root().add_child(bala)
-		return bala
-	return
+	var bala : balaPlayer = _pool.get_element() as balaPlayer
+	bala.position.x = position.x
+	bala.position.y = position.y
+	bala.show()
+	get_tree().get_root().add_child(bala)
+	return bala

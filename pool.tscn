@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfi2mg6xliqdh"]
+[gd_scene load_steps=3 format=3 uid="uid://y2ovjty2w2km"]
 
 [ext_resource type="Script" uid="uid://mj3s8nalaee3" path="res://pool.gd" id="1_03hax"]
 [ext_resource type="Script" uid="uid://bo017d1onn0xw" path="res://bala_player.gd" id="2_q638n"]

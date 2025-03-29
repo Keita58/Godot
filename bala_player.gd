@@ -12,17 +12,16 @@ func _physics_process(delta):
 	position += velocity * delta
 	
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	player._pool.return_element(self)
-	#queue_free()
+	#player._pool.return_element(self)
+	queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Mob: 
-		#hide()
-		get_tree().get_root().remove_child(self)
+		hide()
+#		get_tree().get_root().remove_child(self)
 		body.has_xocat()
-		player._pool.return_element(self)
-		body.hide()
+		#player._pool.return_element(self)
 		#queue_free() # Replace with function body.
 	#	hit.emit()
 
