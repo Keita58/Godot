@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h5ldgj7pjwy"]
 
-[ext_resource type="PackedScene" uid="uid://buhr7ijkpwu0d" path="res://bala.tscn" id="1_edvcb"]
+[ext_resource type="PackedScene" uid="uid://buhr7ijkpwu0d" path="res://Escenes/bala.tscn" id="1_edvcb"]
 
 [node name="Area2D" instance=ExtResource("1_edvcb")]
 

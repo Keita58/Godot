@@ -1,8 +1,8 @@
 class_name Mob
 extends RigidBody2D
 
-var Bullet = preload("res://bala.tscn") # Replace with function body.
-var Bullet2 = preload("res://balaExplosiva.tscn") # Replace with function body.
+var Bullet = preload("res://Escenes/bala.tscn") # Replace with function body.
+var Bullet2 = preload("res://Escenes/balaExplosiva.tscn") # Replace with function body.
 
 signal onXocarMob (powerUp:PowerUp)
 signal shoot(bullet, direction, location)
@@ -21,7 +21,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	#Recorrer getConnections y desconectar.
 
 func has_xocat() -> void:
-	if (randf_range(1,10)<=5):
+	if randf_range(1,10)<=4:
 		var power_up=power_upScene.instantiate() as PowerUp
 		power_up.load_from(powerUpConfigurations[randi_range(0, powerUpConfigurations.size()-1)])
 		power_up.position=global_position

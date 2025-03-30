@@ -41,3 +41,6 @@ func _on_power_up_timer_timeout() -> void:
 
 func _on_player_hurt(vida: int) -> void:
 	$Hp.text = "Lives: " + str(vida)
+
+func _on_player_shoot(balas: int) -> void:
+	$Balas.text = "Bullets: "+str(balas)

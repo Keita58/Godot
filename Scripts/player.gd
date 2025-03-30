@@ -4,10 +4,10 @@ extends Area2D
 signal hit
 signal iniciarTimerPowerUp(duration:int)
 signal hurt(vida:int)
-
+signal shoot(balas:int)
 
 @export var speed = 300
-var Bullet = preload("res://balaPlayer.tscn") # Replace with function body.
+var Bullet = preload("res://Escenes/balaPlayer.tscn") # Replace with function body.
 var hp:int = 3
 var isInvencible:bool=false
 var tween:Tween
@@ -132,6 +132,8 @@ func _invencible(duration:int)->void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is PowerUp:
 		area.PowerUpType.efectePowerUp(self)
+		if area.PowerUpType is AmmoPowerUp:
+			shoot.emit(ammo)
 		area.queue_free()
 	if area is Bala:
 		area.hide()
@@ -159,6 +161,7 @@ func disparar():
 		print_debug("entro")
 		get_tree().get_root().add_child(bullet_instance)
 		ammo-=1
+		shoot.emit(ammo)
 	else:
 		print_debug("JAJA pringado")
 		

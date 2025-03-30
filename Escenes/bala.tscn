@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://buhr7ijkpwu0d"]
 
-[ext_resource type="Script" uid="uid://bmlkwmi02jpgf" path="res://bala.gd" id="1_jk513"]
-[ext_resource type="Texture2D" uid="uid://d1ujw1acup6ku" path="res://art/Ohb8MN.png" id="2_ag3k0"]
+[ext_resource type="Script" uid="uid://bmlkwmi02jpgf" path="res://Scripts/bala.gd" id="1_paenh"]
+[ext_resource type="Texture2D" uid="uid://d1ujw1acup6ku" path="res://art/Ohb8MN.png" id="2_i1ibe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ag3k0"]
 radius = 22.9199
@@ -10,10 +10,10 @@ height = 173.931
 [node name="Area2D" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 collision_mask = 2
-script = ExtResource("1_jk513")
+script = ExtResource("1_paenh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ag3k0")
+texture = ExtResource("2_i1ibe")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

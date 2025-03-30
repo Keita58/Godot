@@ -1,0 +1,109 @@
+bala / balaPlayer
+ 
+ - Area2D
+
+ - Sprite2D
+
+ - VisibleOnScreenNotifier2D
+
+ - CollisionShape2D
+
+
+balaExplosiva
+
+ - Area2D
+
+ - Sprite2D
+
+ - VisibleOnScreenNotifier2D
+
+ - CollisionShape2D
+
+ - Timer -> Temps que triga la bala en explotar
+
+
+mob
+
+ - AnimatedSprite2D -> Animació dels enemics
+
+ - CollisionShape2D -> Per col·lisionar amb el player
+
+ - VisibleOnScreenNotifier2D -> Quan surt de la pantalla s'esborra
+
+ - Timer -> Temps que triga l'enemic en disparar.
+
+
+player
+
+ - AnimatedSprite2D -> Animació del player
+
+ - CollisionShape2D -> Permet col·lisionar amb els objectes
+
+ - Line2D
+
+
+Power_up
+
+ - Sprite2D -> Sprite de l'objecte
+
+ - CollisionShape2D -> Detecció de col·lisions
+
+
+hud
+
+ - Label -> Puntuació actual
+
+ - Label -> Objectiu del joc
+
+ - Button -> Botó per començar la partida
+
+ - Timer -> Temps en el que es mostra l'objectiu del joc
+
+ - Timer -> Temps que dura el PowerUp d'invincibilitat
+
+ - Label -> Mostra el temps que queda per a que s'acabi el power up.
+
+ - Label ->  Mostra les vides actuals.
+
+ - Label -> Mostra la quantitat de bales que tens actualment
+
+
+Pool
+ 
+- La pool no té cap node a part del node root. La seva funcionalitat és pur codi.
+
+
+main
+
+ - player -> Personatge principal
+
+ - Timer -> Temps d'aparició dels enemics
+
+ - Timer -> Score.
+
+ - Timer -> El temps que triga en que comenci el joc
+
+ - Marker2D -> Lloc on el player spawneja
+
+ - Path2D
+   . PathFollow2D
+
+ - CanvasLayer -> HUD
+
+ - AudioStreamPlayer2D -> Audio de quan ets invencible amb el player.
+
+ - AudioStreamPlayer2D -> Audio de quan dispares una bala.
+
+
+game_over_hud
+
+ - Label -> T'informa que s'ha acabat el joc
+
+ - Label -> T'informa la quantitat de punts que has fet durant la partida
+
+ - Label -> T'informa de quina ha sigut la puntació máxima que s'ha aconseguit al
+            joc.
+
+ - Button -> Botó per tornar a la pantalla d'inici
+
+ - AudioStreamPlayer2D -> Audio de quan perds

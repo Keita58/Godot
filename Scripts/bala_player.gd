@@ -1,12 +1,12 @@
 extends Area2D
 class_name balaPlayer
 signal hit
-var Bullet = preload("res://bala.tscn") # Replace with function body.
+var Bullet = preload("res://Escenes/bala.tscn") # Replace with function body.
 signal shoot(bullet, direction, location)
 var velocity = Vector2.RIGHT*700
 @export var pool : Pool
 
-var player = preload("res://player.gd")
+var player = preload("res://Scripts/player.gd")
 
 func _physics_process(delta):
 	position += velocity * delta

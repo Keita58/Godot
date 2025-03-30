@@ -1,6 +1,6 @@
 class_name Bala
 extends Area2D
-var Bullet = preload("res://bala.tscn") # Replace with function body.
+var Bullet = preload("res://Escenes/bala.tscn") # Replace with function body.
 
 signal shoot(bullet, direction, location)
 

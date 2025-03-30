@@ -25,7 +25,7 @@ func game_over() -> void:
 		so_best.score = score
 		ResourceSaver.save(so_best)
 		
-	get_tree().change_scene_to_file("res://game_over_hud.tscn")
+	get_tree().change_scene_to_file("res://Escenes/game_over_hud.tscn")
 
 func new_game():
 	score = 0

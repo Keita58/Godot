@@ -12,4 +12,4 @@ func show_score() -> void:
 	$BestScore.text += str(so_best.score)
 
 func _on_return_pressed() -> void:
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://Escenes/main.tscn")
