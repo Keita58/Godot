@@ -19,6 +19,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_body_entered(body: Node2D) -> void:
 	if body is Mob: 
 		hide()
+		queue_free()
 #		get_tree().get_root().remove_child(self)
 		body.has_xocat()
 		#player._pool.return_element(self)

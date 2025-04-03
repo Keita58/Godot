@@ -159,7 +159,7 @@ func disparar():
 		bullet_instance.rotation = rotation
 		bullet_instance.velocity = bullet_instance.velocity.rotated(rotation)
 		print_debug("entro")
-		get_tree().get_root().add_child(bullet_instance)
+		#get_tree().get_root().add_child(bullet_instance)
 		ammo-=1
 		shoot.emit(ammo)
 	else:

@@ -66,7 +66,8 @@ func _on_start_timer_timeout() -> void:
 	
 func _onSpawnPowerUp(powerUp: PowerUp)->void:
 	var spawnPossibility:int=randi_range(1, 10)
-	if (spawnPossibility<=9):add_child(powerUp)
+	if (spawnPossibility<=9):
+		add_child(powerUp)
 
 func _on_mob_shoot(Bullet, direction, location):
 	var spawned_bullet = Bullet.instantiate()
